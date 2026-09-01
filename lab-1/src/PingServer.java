@@ -1,5 +1,3 @@
-package server;
-
 import java.io.*;
 import java.net.*;
 import java.util.*;
@@ -12,47 +10,50 @@ public class PingServer {
     private static final int AVERAGE_DELAY = 100;// milliseconds
     private static DatagramSocket socket;
 
-public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws Exception {
+        
+        System.out.println("Servidor iniciado");
 
-    while(true){
         // Obter o argumento da linha de comando.
         if (args.length != 1) {
             System.out.println("Required arguments: port");
             return;
         }
-
-        int port = Integer.parseInt(args[0]);
-        // Gerador de números aleatórios p/ simular perda de pacotes e atrasos na rede.
-        Random random = new Random();
-
-        socket = new DatagramSocket(port);
-
-        byte[] buffer = new byte[1024];
-        // Criar um pacote de datagrama para comportar o pacote UDP de chegada.
-        DatagramPacket request = new DatagramPacket(buffer, buffer.length);
-        // Bloquear até que o hospedeiro receba o pacote UDP.
-        socket.receive(request);
-        // Imprimir os dados recebidos.
-        printData(request);
-        // Decidir se responde, ou simula perda de pacotes.
-
-        if (random.nextDouble() < LOSS_RATE) {
-            System.out.println("Reply not sent.");
-            continue;
-        }
         
-        // Simular o atraso da rede.
-        Thread.sleep((int) (random.nextDouble()) * 2 * AVERAGE_DELAY);
-        // Enviar resposta.
-        InetAddress clientHost = request.getAddress();
-        int clientPort = request.getPort();
-        byte[] buf = request.getData();
-        DatagramPacket reply = new DatagramPacket(buf, buf.length, clientHost, clientPort);
-        socket.send(reply);
+        int port = Integer.parseInt(args[0]);
+        socket = new DatagramSocket(port);
+        
+        while(true){
+            // Gerador de números aleatórios p/ simular perda de pacotes e atrasos na rede.
+            Random random = new Random();
 
-        System.out.println("Reply sent.");
+            byte[] buffer = new byte[1024];
+            // Criar um pacote de datagrama para comportar o pacote UDP de chegada.
+            DatagramPacket request = new DatagramPacket(buffer, buffer.length);
+            // Bloquear até que o hospedeiro receba o pacote UDP.
+            socket.receive(request);
+            // Imprimir os dados recebidos.
+            printData(request);
+            // Decidir se responde, ou simula perda de pacotes.
+
+            if (random.nextDouble() < LOSS_RATE) {
+                System.out.println("Reply not sent.");
+                continue;
+            }
+            
+            // Simular o atraso da rede.
+            Thread.sleep((int) (random.nextDouble()) * 2 * AVERAGE_DELAY);
+            // Enviar resposta.
+            InetAddress clientHost = request.getAddress();
+            int clientPort = request.getPort();
+            byte[] buf = request.getData();
+            DatagramPacket reply = new DatagramPacket(buf, buf.length, clientHost, clientPort);
+            socket.send(reply);
+
+            System.out.println("Reply sent.");
+        }
+
     }
-}
 
         /*
         * Imprimir o dado de Ping para o trecho de saída padrão.
