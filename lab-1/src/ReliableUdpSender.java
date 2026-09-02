@@ -7,10 +7,11 @@ import java.util.Random;
 public class ReliableUdpSender {
     private int numberSeq;
     private int port;
-    private static final double LOSS_RATE = 0.3;
     private InetAddress host;
     private DatagramSocket socketSend;
     private Random random;
+    private static final double LOSS_RATE = 0.3;
+    private static final int MAX_PACKETS = 10;
 
     public ReliableUdpSender(int port, String host) throws Exception {
         this.socketSend = new DatagramSocket();
@@ -71,15 +72,16 @@ public class ReliableUdpSender {
        
         ReliableUdpSender sender = new ReliableUdpSender(port, host);
 
-        String payloadTeste = "Mensagem de teste";
-
-        System.out.println("Tentando enviar a mensagem: " + payloadTeste);
-        boolean sucesso = sender.send(payloadTeste);
-
-        if (sucesso) {
-            System.out.println("Resultado: SUCESSO! O pacote foi entregue e o ACK foi recebido.");
-        } else {
-            System.out.println("Resultado: FALHA. O limite de 10 retransmissões foi atingido sem resposta.");
+        for (int i = 0; i < MAX_PACKETS; i++){
+            String payloadTeste = "Mensagem de teste " + i;
+            System.out.println("\n--- Tentando enviar o pacote " + i + " ---");
+            boolean sucesso = sender.send(payloadTeste);
+            
+            if (sucesso) {
+                System.out.println("Resultado: SUCESSO para o pacote " + i);
+            } else {
+                System.out.println("Resultado: FALHA para o pacote " + i);
+            }
         }
     }
 }

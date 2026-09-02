@@ -3,14 +3,12 @@ import java.io.ByteArrayInputStream;
 import java.io.InputStreamReader;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
-import java.net.InetAddress;
-import java.util.Random;
+import java.net.InetAddress;    
 
 /*
  * Servidor para processar as requisições de Ping sobre UDP.
  */
 public class ReliableUdpReceive {
-    private static final double LOSS_RATE = 0.3;
 
     public static void main(String[] args) throws Exception {
 
@@ -23,8 +21,6 @@ public class ReliableUdpReceive {
         }
 
         // Gerador de números aleatórios p/ simular perda de pacotes e atrasos na rede.
-        Random random = new Random();
-
         byte[] buffer = new byte[1024];
 
         int port = Integer.parseInt(args[0]);
@@ -50,23 +46,20 @@ public class ReliableUdpReceive {
                 printData(request);
 
                 // Decidir se responde, ou simula perda de pacotes.
-                if (random.nextDouble() < LOSS_RATE) {
-                    System.out.println("ACK Lost");
-                    continue;
-                }
-
                 if (seqNum == expectedSeqNum) {
                     System.out.println("ACK Received");
-
                     sendAck(socket, request.getAddress(), request.getPort(), seqNum);
+                    // Alterna o esperado entre 0 e 1
+                    expectedSeqNum = (expectedSeqNum == 0) ? 1 : 0;
 
-                    expectedSeqNum++;
                 } else if (seqNum < expectedSeqNum) {
-                    System.out.println("ACK Out of order");
-
+                    System.out.println("ACK Out of order / Duplicado");
+                    // Reenvia o ACK do que já foi processado para destravar o remetente
                     sendAck(socket, request.getAddress(), request.getPort(), seqNum);
+                    
                 } else {
-                    System.out.println("ACK Duplicate");
+                    System.out.println("ACK Fora do limite / Futuro inesperado");
+                    sendAck(socket, request.getAddress(), request.getPort(), expectedSeqNum == 0 ? 1 : 0);
                 }
             }
         }
