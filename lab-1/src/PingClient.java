@@ -55,7 +55,7 @@ public class PingClient {
                     return;
                 }
 
-                byte[] bufferSend = new byte[1024];
+                byte[] bufferSend;
                 byte[] bufferReceive = new byte[1024];
 
                 try {
@@ -63,10 +63,10 @@ public class PingClient {
 
                     bufferSend = String.format("PING %d %s \r\n", countPacket++, dt).getBytes();
                     // Datagrama a ser enviado
-                    
+
                     DatagramPacket packetSend = new DatagramPacket(bufferSend, bufferSend.length, IPAddress, port);
                     // Envia
-                    
+
                     long startTime = System.currentTimeMillis();
                     socketClient.send(packetSend);
 
