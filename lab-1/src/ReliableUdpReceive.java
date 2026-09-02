@@ -4,7 +4,6 @@ import java.io.InputStreamReader;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
-import java.util.Arrays;
 import java.util.Random;
 
 /*
@@ -12,7 +11,6 @@ import java.util.Random;
  */
 public class ReliableUdpReceive {
     private static final double LOSS_RATE = 0.3;
-    private static final int AVERAGE_DELAY = 100;// milliseconds
 
     public static void main(String[] args) throws Exception {
 
@@ -40,15 +38,14 @@ public class ReliableUdpReceive {
                 socket.receive(request);
                 // Imprimir os dados recebidos.
 
-                String[] partes = Arrays.toString(request.getData()).split(":", 3);
+                String[] partes = new String(request.getData(), 0, request.getLength()).split(":", 3);
 
                 if (partes.length != 3 || !partes[0].equals("SEQ")) {
                     System.out.println("Invalid packet");
                     continue;
                 }
 
-                int seqNum = Integer.parseInt(partes[1]);
-                String data = partes[2];
+                int seqNum = Integer.parseInt(partes[1].replace("<", "").replace(">", "").trim());
 
                 printData(request);
 
