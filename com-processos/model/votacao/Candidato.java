@@ -1,11 +1,11 @@
-package votacao;
+package model.votacao;
 
 import java.io.Serializable;
 
 public class Candidato implements Serializable {
     private static final long serialVersionUID = 1L;
-    private int id;
-    private String nome;
+    private final int id;
+    private final String nome;
     private int votos;
 
     public Candidato(int id, String nome) {

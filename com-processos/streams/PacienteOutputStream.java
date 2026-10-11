@@ -8,37 +8,35 @@ import java.io.OutputStream;
 
 public class PacienteOutputStream extends OutputStream {
 
-    private Paciente[] pacientes;
-    private DataOutputStream data;
-    private int qtdPacientes;
+    private final Paciente[] pacientes;
+    private final DataOutputStream data;
+    private final int qtdPacientes;
 
-    public PacienteOutputStream(Paciente[] pacientes, OutputStream fluxo, int qtdPacientes){
-        this.pacientes =  pacientes;
+    public PacienteOutputStream(Paciente[] pacientes, OutputStream fluxo, int qtdPacientes) {
+        this.pacientes = pacientes;
         this.data = new DataOutputStream(fluxo);
         this.qtdPacientes = qtdPacientes;
     }
 
-    public boolean enviarPacientes(){
+    public void enviarPacientes() {
         try {
-            for (int i = 0; i < qtdPacientes; i++){
+            for (int i = 0; i < qtdPacientes; i++) {
                 data.writeInt(pacientes[i].getId());
                 data.writeInt(pacientes[i].getIdade());
                 data.writeUTF(pacientes[i].getNome());
             }
-            
+
             data.flush();
 
-        } catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
-            return false;
         }
 
-        return true;
     }
 
     @Override
     public void write(int b) throws IOException {
         data.write(b);
     }
-    
+
 }

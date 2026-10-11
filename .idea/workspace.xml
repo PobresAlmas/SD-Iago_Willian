@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="11d71cd3-2d3a-4072-89a1-20f43f265605" name="Changes" comment="Remove deprecated `PingServer` implementation.">
-      <change afterPath="$PROJECT_DIR$/com-processos/multicast/ClienteMulticast.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/com-processos/multicast/ServidorMulticast.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/com-processos/Trabalho_1_Comunicação entre processos.pdf" beforeDir="false" />
-    </list>
+    <list default="true" id="11d71cd3-2d3a-4072-89a1-20f43f265605" name="Changes" comment="Remove deprecated `PingServer` implementation." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

@@ -1,16 +1,16 @@
 package streams;
 
+import model.Paciente;
+
 import java.io.DataInputStream;
 import java.io.EOFException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 
-import model.Paciente;
-
 public class PacienteInputStream extends InputStream {
-    private ArrayList<Paciente> pacientes;
-    private DataInputStream dts;
+    private final ArrayList<Paciente> pacientes;
+    private final DataInputStream dts;
 
     public PacienteInputStream(InputStream in) {
         dts = new DataInputStream(in);
@@ -28,11 +28,10 @@ public class PacienteInputStream extends InputStream {
                 pacientes.add(paciente);
             }
 
-        } catch (EOFException e){
+        } catch (EOFException e) {
             System.out.println("Finalizado");
             System.out.println(pacientes);
-        } 
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

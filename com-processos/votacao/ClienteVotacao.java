@@ -1,14 +1,20 @@
 package votacao;
 
-import java.io.*;
-import java.net.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.DatagramPacket;
+import java.net.InetAddress;
+import java.net.MulticastSocket;
+import java.net.Socket;
 import java.util.Scanner;
 
-public class ClienteEleitor {
+public class ClienteVotacao {
     private static final String SERVER_IP = "127.0.0.1";
     private static final int SERVER_TCP_PORT = 6001;
 
-    public static void main(String[] args) {
+    static void main(String[] args) {
         String[] authData = conectarTCP("LOGIN_ELEITOR").split("\\|");
 
         if (authData[0].equals("ENCERRADA")) {

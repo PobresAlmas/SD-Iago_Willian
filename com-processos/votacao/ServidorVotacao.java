@@ -1,22 +1,28 @@
 package votacao;
 
-import java.io.*;
+import model.votacao.Candidato;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.*;
-import java.util.concurrent.*;
-import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class ServidorVotacao {
     private static final int TCP_PORT = 6001;
     private static final int MULTICAST_PORT = 6002;
     private static final String MULTICAST_IP = "230.0.0.2";
 
-    private static List<Candidato> candidatos = Collections.synchronizedList(new ArrayList<>());
+    private static final List<Candidato> candidatos = Collections.synchronizedList(new ArrayList<>());
     private static volatile boolean votacaoAberta = true;
     private static DatagramSocket udpSocket;
 
-    public static void main(String[] args) {
+    static void main(String[] args) {
         candidatos.add(new Candidato(1, "Ada Lovelace"));
         candidatos.add(new Candidato(2, "Alan Turing"));
 
@@ -53,8 +59,8 @@ public class ServidorVotacao {
 
     private static void tratarConexao(Socket socket) {
         try (
-            BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            PrintWriter out = new PrintWriter(socket.getOutputStream(), true)
+                BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                PrintWriter out = new PrintWriter(socket.getOutputStream(), true)
         ) {
             String comando = in.readLine();
             if (comando == null) return;
