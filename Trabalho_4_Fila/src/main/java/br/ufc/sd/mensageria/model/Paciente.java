@@ -2,6 +2,7 @@ package br.ufc.sd.mensageria.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -9,6 +10,7 @@ import java.util.UUID;
 
 
 @Getter
+@RequiredArgsConstructor
 @AllArgsConstructor
 public class Paciente implements Serializable {
     @Serial
@@ -20,6 +22,10 @@ public class Paciente implements Serializable {
 
     @Override
     public String toString() {
-        return "Paciente [nome=" + nome + ", id=" + id + ", idade=" + idade + "]";
+        return "Paciente {" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", idade=" + idade +
+                " }";
     }
 }

@@ -4,8 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="11d71cd3-2d3a-4072-89a1-20f43f265605" name="Changes" comment="feat: add Trabalho_4_Fila Maven messaging project with patient record models">
-      <change afterPath="$PROJECT_DIR$/compose.yml" afterDir="false" />
+    <list default="true" id="11d71cd3-2d3a-4072-89a1-20f43f265605" name="Changes" comment="chore: move RabbitMQ Docker Compose configuration into Trabalho_4_Fila">
+      <change afterPath="$PROJECT_DIR$/Trabalho_4_Fila/src/main/java/br/ufc/sd/mensageria/Produtor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Trabalho_4_Fila/compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Trabalho_4_Fila/compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Trabalho_4_Fila/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Trabalho_4_Fila/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Trabalho_4_Fila/src/main/java/br/ufc/sd/mensageria/Consumidor.java" beforeDir="false" afterPath="$PROJECT_DIR$/Trabalho_4_Fila/src/main/java/br/ufc/sd/mensageria/Consumidor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Trabalho_4_Fila/src/main/java/br/ufc/sd/mensageria/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Trabalho_4_Fila/src/main/java/br/ufc/sd/mensageria/model/Paciente.java" beforeDir="false" afterPath="$PROJECT_DIR$/Trabalho_4_Fila/src/main/java/br/ufc/sd/mensageria/model/Paciente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Trabalho_4_Fila/src/main/java/br/ufc/sd/mensageria/model/Prontuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/Trabalho_4_Fila/src/main/java/br/ufc/sd/mensageria/model/Prontuario.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,8 +27,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Dockerfile" />
+        <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -48,61 +57,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.001129578304595" />
-      <entry key="MS500" value="1.2573850208585011" />
-      <entry key="S2" value="1.712483355518959" />
-      <entry key="S5" value="1.9220095773536026" />
-      <entry key="S10" value="2.4736040836581035" />
-      <entry key="S30" value="6.0981353165242735" />
-      <entry key="S60" value="9.411112428173842" />
-      <entry key="M2" value="12.221179321707721" />
-      <entry key="M5" value="15.390618317558323" />
-      <entry key="M10" value="18.118809384642947" />
-      <entry key="M15" value="20.03806522654932" />
-      <entry key="M30" value="24.052357116917833" />
-      <entry key="H1" value="28.228195541687313" />
-      <entry key="H2" value="31.48055480867759" />
-      <entry key="H4" value="33.54982711624544" />
-      <entry key="D1" value="35.5618874282095" />
-      <entry key="W1" value="35.936636302105995" />
+      <entry key="MS100" value="1.000000000000205" />
+      <entry key="MS500" value="1.0028994600988848" />
+      <entry key="S2" value="1.2320487771622712" />
+      <entry key="S5" value="1.5575125468767677" />
+      <entry key="S10" value="1.7559280923721696" />
+      <entry key="S30" value="2.3431242912639103" />
+      <entry key="S60" value="3.0957617955333503" />
+      <entry key="M2" value="3.8607526103781464" />
+      <entry key="M5" value="6.468648958233035" />
+      <entry key="M10" value="16.57381610900643" />
+      <entry key="M15" value="29.3418974214163" />
+      <entry key="M30" value="65.8567801289948" />
+      <entry key="H1" value="115.95087354520638" />
+      <entry key="H2" value="164.18907447751963" />
+      <entry key="H4" value="199.42779102384642" />
+      <entry key="D1" value="237.27545630213197" />
+      <entry key="W1" value="244.72731104815455" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="0.0" />
-      <entry key="S2" value="6.503724281593223E-86" />
-      <entry key="S5" value="1.0666636823823023E-34" />
-      <entry key="S10" value="1.748454371528112E-17" />
-      <entry key="S30" value="7.87816203319754E-6" />
-      <entry key="S60" value="0.007672782306616091" />
-      <entry key="M2" value="0.2588658731336769" />
-      <entry key="M5" value="2.3602436070728143" />
-      <entry key="M10" value="5.38299352326538" />
-      <entry key="M15" value="7.564149782183812" />
-      <entry key="M30" value="11.868469436131408" />
-      <entry key="H1" value="15.985958368239842" />
-      <entry key="H2" value="19.005511909764575" />
-      <entry key="H4" value="20.860115481233546" />
-      <entry key="D1" value="22.6214702524492" />
-      <entry key="W1" value="22.94535904610388" />
+      <entry key="MS100" value="2.665389147870675E-23" />
+      <entry key="MS500" value="3.055991380954999E-5" />
+      <entry key="S2" value="0.07435124392921913" />
+      <entry key="S5" value="0.35514981028672704" />
+      <entry key="S10" value="0.6542519851712858" />
+      <entry key="S30" value="1.7373581394656017" />
+      <entry key="S60" value="2.932653314530951" />
+      <entry key="M2" value="4.140608248134166" />
+      <entry key="M5" value="7.30706075375694" />
+      <entry key="M10" value="14.985494327296761" />
+      <entry key="M15" value="22.71240256824021" />
+      <entry key="M30" value="43.98731884923357" />
+      <entry key="H1" value="75.83208195963569" />
+      <entry key="H2" value="108.8782867956584" />
+      <entry key="H4" value="133.9798266707243" />
+      <entry key="D1" value="161.56728873075664" />
+      <entry key="W1" value="167.06011568761534" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.0014204620945868487" />
-      <entry key="MS500" value="0.3257614401740964" />
-      <entry key="S2" value="1.207844804709046" />
-      <entry key="S5" value="1.672498848490628" />
-      <entry key="S10" value="2.2962830284291527" />
-      <entry key="S30" value="5.890822378615393" />
-      <entry key="S60" value="9.24601365747963" />
-      <entry key="M2" value="12.364527000312657" />
-      <entry key="M5" value="17.690333457734322" />
-      <entry key="M10" value="23.46520074778503" />
-      <entry key="M15" value="27.57451686474621" />
-      <entry key="M30" value="35.90312724981697" />
-      <entry key="H1" value="44.203228139406974" />
-      <entry key="H2" value="50.47980131124646" />
-      <entry key="H4" value="54.40655746646875" />
-      <entry key="D1" value="58.182752975792134" />
-      <entry key="W1" value="58.88190788991847" />
+      <entry key="MS100" value="0.018710604759670756" />
+      <entry key="MS500" value="0.45131348630226226" />
+      <entry key="S2" value="0.945268539373734" />
+      <entry key="S5" value="1.5719252505043948" />
+      <entry key="S10" value="2.1571202481321565" />
+      <entry key="S30" value="3.9334227048145465" />
+      <entry key="S60" value="5.923316788762818" />
+      <entry key="M2" value="7.933217740489089" />
+      <entry key="M5" value="13.734738662464594" />
+      <entry key="M10" value="31.520306300370184" />
+      <entry key="M15" value="52.01423601157393" />
+      <entry key="M30" value="109.80281141048863" />
+      <entry key="H1" value="191.7455092332585" />
+      <entry key="H2" value="273.0397184215399" />
+      <entry key="H4" value="333.3903721725994" />
+      <entry key="D1" value="398.83923944316456" />
+      <entry key="W1" value="411.78690791914215" />
     </decayedShown>
   </component>
   <component name="OptimizeOnSaveOptions">
@@ -119,6 +128,8 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.Consumidor.executor": "Run",
+    "Application.Produtor.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.MCP Project settings loaded": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -144,6 +155,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Trabalho_4_Fila" />
       <recent name="$PROJECT_DIR$/Trabalho_4_Fila/src/main/java/org/example/model" />
       <recent name="$PROJECT_DIR$" />
     </key>
@@ -185,17 +197,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Remove deprecated `PingServer` implementation." />
     <MESSAGE value="feat: add Trabalho_4_Fila Maven messaging project with patient record models" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: add Trabalho_4_Fila Maven messaging project with patient record models" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Trabalho_4_Fila/src/main/java/br/ufc/sd/mensageria/Main.java</url>
-          <line>13</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="feat: add RabbitMQ Docker Compose configuration" />
+    <MESSAGE value="chore: move RabbitMQ Docker Compose configuration into Trabalho_4_Fila" />
+    <option name="LAST_COMMIT_MESSAGE" value="chore: move RabbitMQ Docker Compose configuration into Trabalho_4_Fila" />
   </component>
 </project>
