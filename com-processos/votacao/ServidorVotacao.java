@@ -34,10 +34,10 @@ public class ServidorVotacao {
 
         ExecutorService threadPool = Executors.newCachedThreadPool();
 
-        // Temporizador da Votação (60 segundos de prazo fixo)
+        // Temporizador da Votação (30 segundos de prazo fixo)
         threadPool.execute(() -> {
             try {
-                Thread.sleep(60000);
+                Thread.sleep(30000);
                 votacaoAberta = false;
                 calcularResultados();
             } catch (InterruptedException e) {
