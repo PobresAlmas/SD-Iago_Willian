@@ -39,12 +39,11 @@ public class Consumidor {
 
                 Thread.sleep(2000);
 
-                channel.basicAck(deliveryTag, false);
-                System.out.println("[Consumidor] Concluído e confirmado (ACK): " + paciente.getId());
-
                 Prontuario prontuario = new Prontuario(paciente.getId(), "Remédio bom");
-
+                
+                channel.basicAck(deliveryTag, false);
                 System.out.println("[Consumidor] Prontuário criado: " + prontuario);
+                System.out.println("[Consumidor] Concluído e confirmado (ACK): " + paciente.getId());
             } catch (Exception e) {
                 System.err.println("[Consumidor] Falha ao processar mensagem: " + e.getMessage());
 
