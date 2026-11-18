@@ -1,0 +1,7 @@
+services:
+  rabbitmq:
+    image: docker.io/rabbitmq:4.4-alpine
+    container_name: fila-rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
