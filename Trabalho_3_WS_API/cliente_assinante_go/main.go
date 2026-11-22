@@ -12,7 +12,6 @@ import (
 	"strings"
 )
 
-// Altere para o IP da máquina do servidor quando testarem em computadores diferentes
 const serverIP = "localhost"
 const baseURL = "http://" + serverIP + ":8080/api"
 
