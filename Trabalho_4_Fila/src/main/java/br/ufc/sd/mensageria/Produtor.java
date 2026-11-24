@@ -12,6 +12,8 @@ import java.util.concurrent.TimeoutException;
 
 
 public class Produtor {
+    private static final String EXCHANGE_NAME = "paciente_exchange";
+    private static final String ROUTING_KEY = "paciente.create";
     private static final String QUEUE_NAME = "paciente_queue";
 
     static void main() throws IOException, TimeoutException {
@@ -24,14 +26,17 @@ public class Produtor {
         ObjectMapper mapper = new ObjectMapper();
 
         try (Connection connection = factory.newConnection(); Channel channel = connection.createChannel()) {
+            channel.exchangeDeclare(EXCHANGE_NAME, "direct");
             channel.queueDeclare(QUEUE_NAME, true, false, false, null);
 
-            for (int i = 1; i <= 10; i++) {
+            channel.queueBind(QUEUE_NAME, EXCHANGE_NAME, ROUTING_KEY);
+
+            for (int i = 1; i <= 20; i++) {
                 Paciente paciente = new Paciente("Paciente " + i, (int) (Math.random() * 100));
 
                 byte[] messageBytes = mapper.writeValueAsBytes(paciente);
 
-                channel.basicPublish("", QUEUE_NAME, MessageProperties.PERSISTENT_TEXT_PLAIN, messageBytes);
+                channel.basicPublish(EXCHANGE_NAME, ROUTING_KEY, MessageProperties.PERSISTENT_TEXT_PLAIN, messageBytes);
 
                 System.out.println("[Produtor] Enviado: " + mapper.writeValueAsString(paciente));
                 Thread.sleep(500);

@@ -1,6 +1,6 @@
 services:
   rabbitmq:
-    image: docker.io/rabbitmq:4.4-management-alpine
+    image: docker.io/rabbitmq:4-management-alpine
     container_name: fila-rabbitmq
     hostname: fila-rabbitmq
     restart: unless-stopped
